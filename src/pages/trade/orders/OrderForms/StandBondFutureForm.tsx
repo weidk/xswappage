@@ -12,6 +12,7 @@ import {
     Row,
     Col,
     Divider,
+    message,
 } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import moment from 'moment';
@@ -162,6 +163,11 @@ class StandBondFutureForm extends React.Component<StandBondFutureFormProps, any>
                                     type="danger"
                                     htmlType="submit"
                                     disabled={hasErrors(getFieldsError())}
+                                    onClick={() =>
+                                        message.error(
+                                            '服务端异常：clOrdId:ORDE20191209dhde54352634,errorMsg:XSWAP撤销订单时接口报价权限不足',
+                                        )
+                                    }
                                 >
                                     提交
                                 </Button>

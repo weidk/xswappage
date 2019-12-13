@@ -38,7 +38,7 @@ class StandBondFutureQuotation extends React.Component<StandBondFutureQuotationP
           value: '五档',
         },
       ],
-      onFilter: (value: string, record: any) => record.name.indexOf(value) === 0,
+      onFilter: (value: string, record: any) => record.depth.indexOf(value) === 0,
     },
     {
       title: '合约品种',

@@ -4,6 +4,60 @@ import styles from './DealsInfoStandBondFuture.css';
 
 interface DealsInfoStandBondFutureProps {}
 
+const mockdata: object[] = [
+    {
+        key: '1',
+        clordid: 'ORDE20191209dhde54352634',
+        state: '有效',
+        self: '东海证券',
+        contracts: 'CDB5_2003',
+        side: 'BID',
+        price: '98.3450',
+        restprinciple: 1,
+        nominalprincipal: 1,
+        oc: '开仓',
+        ordertype: '限价订单',
+        validtime: '19:00',
+        from: 'API',
+        traderid: 'dhzqdealer',
+        quoteid: '191212054303003477',
+    },
+    {
+        key: '2',
+        clordid: 'ORDE20191209dhde54352234',
+        state: '有效',
+        self: '东海证券',
+        contracts: 'CDB5_2003',
+        side: 'OFR',
+        price: '99.3450',
+        restprinciple: 1,
+        nominalprincipal: 1,
+        oc: '开仓',
+        ordertype: '限价订单',
+        validtime: '19:00',
+        from: 'API',
+        traderid: 'dhzqdealer',
+        quoteid: '191212054303003478',
+    },
+    {
+        key: '3',
+        clordid: 'ORDE20191209dhde54352237',
+        state: '有效',
+        self: '东海证券',
+        contracts: 'CDB5_2006',
+        side: 'BID',
+        price: '99.3450',
+        restprinciple: 1,
+        nominalprincipal: 1,
+        oc: '开仓',
+        ordertype: '限价订单',
+        validtime: '19:00',
+        from: 'API',
+        traderid: 'dhzqdealer',
+        quoteid: '191212054303003479',
+    },
+];
+
 class DealsInfoStandBondFuture extends React.Component<DealsInfoStandBondFutureProps, any> {
     constructor(props: DealsInfoStandBondFutureProps) {
         super(props);
@@ -38,7 +92,7 @@ class DealsInfoStandBondFuture extends React.Component<DealsInfoStandBondFutureP
                     value: '撤销',
                 },
             ],
-            onFilter: (value: string, record: any) => record.name.indexOf(value) === 0,
+            onFilter: (value: string, record: any) => record.state.indexOf(value) === 0,
         },
         {
             title: '本方',
@@ -61,7 +115,7 @@ class DealsInfoStandBondFuture extends React.Component<DealsInfoStandBondFutureP
                     value: 'OFR',
                 },
             ],
-            onFilter: (value: string, record: any) => record.name.indexOf(value) === 0,
+            onFilter: (value: string, record: any) => record.side.indexOf(value) === 0,
         },
         {
             title: '价格(元)',
@@ -88,7 +142,7 @@ class DealsInfoStandBondFuture extends React.Component<DealsInfoStandBondFutureP
                     value: '平仓',
                 },
             ],
-            onFilter: (value: string, record: any) => record.name.indexOf(value) === 0,
+            onFilter: (value: string, record: any) => record.oc.indexOf(value) === 0,
         },
         {
             title: '订单类型',
@@ -103,7 +157,7 @@ class DealsInfoStandBondFuture extends React.Component<DealsInfoStandBondFutureP
                     value: '点击成交FAK',
                 },
             ],
-            onFilter: (value: string, record: any) => record.name.indexOf(value) === 0,
+            onFilter: (value: string, record: any) => record.ordertype.indexOf(value) === 0,
         },
         {
             title: '有效时间',
@@ -122,11 +176,11 @@ class DealsInfoStandBondFuture extends React.Component<DealsInfoStandBondFutureP
                     value: 'API',
                 },
             ],
-            onFilter: (value: string, record: any) => record.name.indexOf(value) === 0,
+            onFilter: (value: string, record: any) => record.from.indexOf(value) === 0,
         },
         {
             title: '订单编号',
-            dataIndex: 'validtime',
+            dataIndex: 'quoteid',
         },
         {
             title: '本方交易员ID',
@@ -149,11 +203,7 @@ class DealsInfoStandBondFuture extends React.Component<DealsInfoStandBondFutureP
         };
         return (
             <div className={styles.normal}>
-                <Table
-                    rowSelection={rowSelection}
-                    columns={this.columns}
-                    dataSource={this.state.orderdata}
-                />
+                <Table rowSelection={rowSelection} columns={this.columns} dataSource={mockdata} />
                 <Row>
                     <Col span={2} push={22}>
                         <Button>撤销订单</Button>
